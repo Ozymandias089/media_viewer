@@ -1,0 +1,24 @@
+/** dark.css **/
+:root {
+    --bg-color: #121212;
+    --text-color: #eeeeee;
+    --card-bg: #1e1e1e;
+    --header-bg: #1c1c1c;
+    --card-border-folder: #3399ff;
+    --card-border-file: #66cc66;
+    --card-shadow: rgba(255, 255, 255, 0.05);
+  }
+  
+  /* 버튼과 관련된 색상 */
+.theme-toggle {
+  background-color: #333333;  /* 버튼 배경색 (다크 모드) */
+  color: #ffffff;  /* 버튼 텍스트 색 */
+}
+/*
+.theme-toggle img {
+  filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(160deg);
+}
+*/
+.theme-toggle:hover {
+  background-color: #444444;  /* 버튼 호버 색상 */
+}
