@@ -40,7 +40,7 @@
 }
 
 .zoom-container {
-  overflow: hidden;
+  overflow: visible;
   max-width: 90vw;
   max-height: 90vh;
   display: flex;
@@ -56,8 +56,8 @@
 }
 
 .zoomable {
-  max-width: 90vw;
-  max-height: 90vh;
+  max-width: none;
+  max-height: none;
   object-fit: contain;
   cursor: zoom-in;
   transition: transform 0.2s ease;

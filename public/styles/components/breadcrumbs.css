@@ -9,12 +9,12 @@
     gap: 0.5rem;
     padding: 0.5rem 1rem;
     font-size: 0.9rem;
-    padding-left: 3rem; /* 👈 추가 */
+    padding-left: 3rem;
     padding-bottom: 0;
   }
   .breadcrumbs a {
     text-decoration: none;
-    color: #007acc;
+    color: var(--text-color);
   }
   .breadcrumbs span {
     font-weight: bold;

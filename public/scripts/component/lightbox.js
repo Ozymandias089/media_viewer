@@ -1,3 +1,7 @@
+/**
+ * Initializes lightbox functionality for image and video elements.
+ * Enables zooming on images and keyboard navigation between media items.
+ */
 export function initLightbox() {
   const mediaCards = Array.from(document.querySelectorAll('.card[data-type="image"], .card[data-type="video"]'))
   let currentIndex = null
@@ -12,6 +16,11 @@ export function initLightbox() {
     })
   })
 
+  /**
+   * Opens the lightbox with specified media type and URL.
+   * @param {'image' | 'video'} type - Type of media to display.
+   * @param {string} url - Media source URL.
+   */
   function openMedia(type, url) {
     if (instance && instance.visible()) {
       instance.close()
@@ -36,6 +45,10 @@ export function initLightbox() {
     instance.show()
   }
 
+  /**
+   * Enables zoom and drag functionality on image elements within the lightbox.
+   * @param {HTMLImageElement} img - Image element to enable zooming for.
+   */
   function setupClickZoom(img) {
     let scale = 1
     let originX = 0
@@ -138,6 +151,10 @@ export function initLightbox() {
     }
   })
 
+  /**
+   * Navigates to the next or previous media item in the lightbox.
+   * @param {number} direction - +1 for next, -1 for previous.
+   */
   function navigateLightbox(direction) {
     const newIndex = currentIndex + direction
     if (newIndex < 0 || newIndex >= mediaCards.length) return
