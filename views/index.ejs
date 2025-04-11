@@ -6,6 +6,10 @@
   <link rel="stylesheet" href="/styles/style.css" />
   <link id="theme-style" rel="stylesheet" href="/styles/themes/dark.css" />
   <link rel="icon" href="/icons/Github-Octicons-Flame-16.svg" id="page-logo" />
+  <!-- 스타일 -->
+  <link rel="stylesheet" href="https://unpkg.com/basiclightbox@5.0.4/dist/basicLightbox.min.css">
+  <!-- 스크립트 -->
+  <script src="https://unpkg.com/basiclightbox@5.0.4/dist/basicLightbox.min.js"></script>
 </head>
 <body> 
   <header>
@@ -31,8 +35,13 @@
   <% } %>  
 
   <div class="masonry">
-    <% items.forEach(item => { %>
-      <%- include('partials/card', { type: item.type, name: item.name, url: item.url }) %>
+    <% items.forEach((item, index) => { %>
+      <%- include('partials/card', { 
+        type: item.type, 
+        name: item.name, 
+        url: item.url, 
+        index: index 
+      }) %>
     <% }); %>
   </div>
 
@@ -43,5 +52,6 @@
   </button>
 
   <script type="module" src="/scripts/main.js"></script>
+  <%- include('partials/lightbox') %>
 </body>
 </html>

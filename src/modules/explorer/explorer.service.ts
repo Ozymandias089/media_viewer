@@ -8,26 +8,28 @@ import { FileItem, FileType } from '../../utils/types';
 export class ExplorerService {
   private readonly contentPath = path.join(process.cwd(), 'content');
 
-  getExplorerItems(): FileItem[] {
-    const entries = fs.readdirSync(this.contentPath, { withFileTypes: true });
+  getExplorerItems(subPath = ''): FileItem[] {
+    const targetPath = path.join(this.contentPath, subPath);
+    const entries = fs.readdirSync(targetPath, { withFileTypes: true });
 
     const items: FileItem[] = entries
-      .map((entry) => this.createItem(entry))
+      .map((entry) => this.createItem(entry, subPath))
       .filter((item): item is FileItem => item !== null)
       .sort((a, b) => this.sortItems(a, b));
 
     return items;
   }
 
-  private createItem(entry: fs.Dirent): FileItem | null {
+  private createItem(entry: fs.Dirent, parentPath: string): FileItem | null {
     const name = entry.name;
     const encodedName = encodeURIComponent(name);
+    const fullPath = parentPath ? `${parentPath}/${encodedName}` : encodedName;
 
     if (entry.isDirectory()) {
       return {
         name,
         type: FileType.Directory,
-        url: `/browse/${encodedName}`,
+        url: `/browse/${fullPath}`,
       };
     } else if (entry.isFile()) {
       const ext = path.extname(name).toLowerCase();
@@ -36,7 +38,7 @@ export class ExplorerService {
       return {
         name,
         type,
-        url: `/content/${encodedName}`,
+        url: `/content/${fullPath}`,
       };
     }
 

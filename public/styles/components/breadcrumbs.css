@@ -5,6 +5,7 @@
     align-items: center;
     justify-content: flex-start;
     width: 100%;
+    max-width: 90%;
     gap: 0.5rem;
     padding: 0.5rem 1rem;
     font-size: 0.9rem;

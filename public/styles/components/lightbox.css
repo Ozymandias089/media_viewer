@@ -1,0 +1,68 @@
+/** lightbox.css **/
+#lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    overflow: auto;
+  }
+  
+  #lightbox-overlay.hidden {
+    display: none;
+  }
+  
+  #lightbox-content {
+    position: relative;
+    overflow: hidden;
+    max-width: 90vw;
+    max-height: 90vh;
+  }
+  
+  #lightbox-content img,
+  #lightbox-content video {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+    display: block;
+  }
+  
+  #lightbox-close {
+    position: fixed;
+    top: 20px;
+    right: 24px;
+    background: transparent;
+    border: none;
+    font-size: 36px;
+    color: rgba(255, 255, 255, 0.6);  /* 반투명 흰색 */
+    cursor: pointer;
+    z-index: 10000;
+  
+    /* 자연스러운 hover 효과 */
+    transition: transform 0.15s ease, color 0.15s ease;
+  }
+  
+  #lightbox-close:hover {
+    transform: scale(1.2);
+    color: rgba(255, 255, 255, 0.9);  /* hover 시 더 뚜렷하게 */
+  }
+
+  .zoomable {
+    transition: transform 0.1s ease-out;
+    transform-origin: center center;
+    user-select: none;
+    pointer-events: auto;
+    cursor: zoom-in;
+  }
+  
+  .zoom-container {
+    overflow: hidden; /* 기본은 숨기기 */
+    max-width: 90vw;
+    max-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }

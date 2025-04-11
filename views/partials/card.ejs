@@ -1,4 +1,4 @@
-<div class="card <%= type %>">
+<div class="card <%= type %>" data-type="<%= type %>" data-url="<%= url %>" data-index="<%= index %>">
   <% if (type === 'image' || type === 'video') { %>
     <!-- 이미지나 비디오만 미리보기 중심 -->
     <% if (type === 'image') { %>
