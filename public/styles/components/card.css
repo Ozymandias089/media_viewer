@@ -1,0 +1,43 @@
+/** card.css **/
+.card {
+    padding: 0.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-color: var(--card-bg);
+    display: flex;
+    flex-direction: column;
+    break-inside: avoid;
+    margin-bottom: 1rem;
+  }
+  
+  .card img.preview-image,
+  .card video.preview-video {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    object-fit: cover;
+  }
+  
+  .folder-icon,
+  .file-icon {
+    font-size: 4rem;
+    text-align: center;
+    opacity: 0.8;
+    height: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+  }
+  
+  .folder-name,
+  .file-name {
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  

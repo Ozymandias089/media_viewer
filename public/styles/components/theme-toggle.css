@@ -1,0 +1,36 @@
+/** theme-toggle.css **/
+.theme-toggle {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border: none;
+    font-size: 1.5rem;
+    padding: 0.75rem;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+  }
+  
+  .theme-toggle:hover {
+    background-color: var(--header-bg);
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* 아이콘 전용 클래스가 따로 있어야 함 (기존: .theme-toggle theme-icon → 문법 오류) */
+  .theme-icon {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    fill: var(--text-color);
+  }
+  
