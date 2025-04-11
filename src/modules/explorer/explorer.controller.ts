@@ -1,5 +1,7 @@
 import { Controller, Get, Render } from '@nestjs/common';
 import { ExplorerService } from './explorer.service';
+import { getBreadcrumbs } from 'src/utils/path-utils';
+import { Breadcrumb, FileItem } from 'src/utils/types';
 
 @Controller()
 export class ExplorerController {
@@ -8,10 +10,12 @@ export class ExplorerController {
   @Get()
   @Render('index')
   getHome() {
-    const items = this.explorerService.getExplorerItems();
+    const items: FileItem[] = this.explorerService.getExplorerItems();
+    const breadcrumbs: Breadcrumb[] = getBreadcrumbs('');
     return {
       title: 'My File Explorer',
       items,
+      breadcrumbs,
     };
   }
 }

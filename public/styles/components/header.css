@@ -8,12 +8,20 @@ header {
     width: 100%;
     background-color: var(--header-bg);
   }
-  
+
   .header-content {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
+  }
+
+  .header-content a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    gap: 0.5rem;
   }
   
   header h1 {

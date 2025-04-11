@@ -10,3 +10,8 @@ export enum FileType {
     type: FileType;
     url: string;
   }
+
+  export interface Breadcrumb {
+    name: string;
+    url: string;
+  }
