@@ -53,7 +53,7 @@ export function initLightbox() {
     img.ondragstart = () => false
   
     function updateTransform() {
-      img.style.transform = `scale(${scale}) translate(${originX}px, ${originY}px)`
+      img.style.transform = `translate(${originX}px, ${originY}px) scale(${scale})`
     }
   
     container.addEventListener('mousedown', (e) => {
@@ -76,8 +76,8 @@ export function initLightbox() {
       }
   
       if (dragMoved) {
-        originX += dx / scale
-        originY += dy / scale
+        originX += dx
+        originY += dy
         startX = e.clientX
         startY = e.clientY
         updateTransform()
@@ -87,7 +87,7 @@ export function initLightbox() {
     container.addEventListener('mouseup', (e) => {
       if (!isZoomed || e.button !== 0) return
       isDragging = false
-      container.style.cursor = isZoomed ? 'grab' : 'zoom-in'
+      container.style.cursor = 'grab'
     })
   
     container.addEventListener('mouseleave', () => {
@@ -108,22 +108,23 @@ export function initLightbox() {
         originX = 0
         originY = 0
         isZoomed = true
+        container.classList.add('zoomed')
         container.style.cursor = 'grab'
         img.style.cursor = 'zoom-out'
-        container.style.overflow = 'visible'
       } else {
         scale = 1
         originX = 0
         originY = 0
         isZoomed = false
+        container.classList.remove('zoomed')
         container.style.cursor = 'zoom-in'
         img.style.cursor = 'zoom-in'
-        container.style.overflow = 'hidden'
       }
   
       updateTransform()
     })
-  }  
+  }
+    
 
   document.addEventListener('keydown', (e) => {
     if (!instance || !instance.visible()) return

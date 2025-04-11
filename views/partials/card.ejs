@@ -1,18 +1,15 @@
 <div class="card <%= type %>" data-type="<%= type %>" data-url="<%= url %>" data-index="<%= index %>">
-  <% if (type === 'image' || type === 'video') { %>
-    <!-- 이미지나 비디오만 미리보기 중심 -->
-    <% if (type === 'image') { %>
-      <img src="<%= url %>" alt="<%= name %>" class="preview-image"/>
-    <% } else { %>
-      <video src="<%= url %>" autoplay muted playsinline loop class="preview-video"></video>
-    <% } %>
-  <% } else { %>
-    <% if (type === 'directory') { %>
+  <% if (type === 'directory') { %>
+    <a href="<%= url %>" class="folder-link">
       <div class="folder-icon">📁</div>
       <div class="folder-name"><%= name %></div>
-    <% } else { %>
-      <div class="file-icon">📄</div>
-      <div class="file-name"><%= name %></div>
-    <% } %>
+    </a>
+  <% } else if (type === 'image') { %>
+    <img src="<%= url %>" alt="<%= name %>" class="preview-image"/>
+  <% } else if (type === 'video') { %>
+    <video src="<%= url %>" autoplay muted playsinline loop class="preview-video"></video>
+  <% } else { %>
+    <div class="file-icon">📄</div>
+    <div class="file-name"><%= name %></div>
   <% } %>
 </div>

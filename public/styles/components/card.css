@@ -40,4 +40,12 @@
     white-space: nowrap;
     text-overflow: ellipsis;
   }
+  .folder-link {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .folder-link:hover {
+    color: var(--accent-color)
+  }
   

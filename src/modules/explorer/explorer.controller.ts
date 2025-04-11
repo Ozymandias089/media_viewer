@@ -21,13 +21,12 @@ export class ExplorerController {
 
   @Get('browse/*path')
   @Render('index')
-  getFolder(@Param('path') params: any) {
-    const subPath: string = decodeURIComponent(params[0] || '');
-    const items: FileItem[] = this.explorerService.getExplorerItems(subPath);
-    const breadcrumbs: Breadcrumb[] = getBreadcrumbs(subPath);
+  getFolder(@Param('path') pathParam: string | string[]) {
+    const items = this.explorerService.getExplorerItems(pathParam);
+    const breadcrumbs = getBreadcrumbs(pathParam);
 
     return {
-      title: `Folder: ${subPath || 'Home'}`,
+      title: `Folder: ${Array.isArray(pathParam) ? pathParam.join('/') : pathParam || 'Home'}`,
       items,
       breadcrumbs,
     };

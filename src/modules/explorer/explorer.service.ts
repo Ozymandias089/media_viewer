@@ -1,5 +1,5 @@
 // src/modules/explorer/explorer.service.ts
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import * as fs from 'fs';
 import * as path from 'path';
 import { FileItem, FileType } from '../../utils/types';
@@ -8,16 +8,23 @@ import { FileItem, FileType } from '../../utils/types';
 export class ExplorerService {
   private readonly contentPath = path.join(process.cwd(), 'content');
 
-  getExplorerItems(subPath = ''): FileItem[] {
+  getExplorerItems(pathParam: string | string[] = ''): FileItem[] {
+    const subPath = Array.isArray(pathParam) ? pathParam.join('/') : pathParam;
     const targetPath = path.join(this.contentPath, subPath);
-    const entries = fs.readdirSync(targetPath, { withFileTypes: true });
 
-    const items: FileItem[] = entries
-      .map((entry) => this.createItem(entry, subPath))
-      .filter((item): item is FileItem => item !== null)
-      .sort((a, b) => this.sortItems(a, b));
+    try {
+      const entries = fs.readdirSync(targetPath, { withFileTypes: true });
 
-    return items;
+      const items: FileItem[] = entries
+        .map((entry) => this.createItem(entry, subPath))
+        .filter((item): item is FileItem => item !== null)
+        .sort((a, b) => this.sortItems(a, b));
+
+      return items;
+    } catch (error) {
+      console.error('파일 탐색 중 오류:', error.message);
+      throw new NotFoundException(`경로를 찾을 수 없습니다: ${subPath}`);
+    }
   }
 
   private createItem(entry: fs.Dirent, parentPath: string): FileItem | null {
