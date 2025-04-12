@@ -5,7 +5,7 @@ import * as path from 'path';
 import { FileItem, FileType } from '../../utils/types';
 
 @Injectable()
-export class ExplorerService {
+export class ExplorerService { // TDOO: 로직 좀 다듬기. DTO도 잘 활용할 수 있도록.
   private readonly contentPath = path.join(process.cwd(), 'content');
 
   /**

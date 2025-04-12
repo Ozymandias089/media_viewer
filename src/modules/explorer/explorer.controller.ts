@@ -5,7 +5,7 @@ import { Breadcrumb, FileItem } from 'src/utils/types';
 import { ExplorerResponseDto } from './dto/explorer-response.dto';
 
 @Controller()
-export class ExplorerController {
+export class ExplorerController { // TODO: 결과에 폴더가 있으면 폴더 썸네일도 받아오기.
   constructor(private readonly explorerService: ExplorerService) {}
 
   /**

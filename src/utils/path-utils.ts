@@ -16,7 +16,7 @@ import { Breadcrumb } from "./types";
  *   예: `"category/item"` 또는 `["category", "item"]`
  * @returns {Breadcrumb[]} Breadcrumb 객체 배열. 경로의 각 부분을 나타냅니다.
  */
-export function getBreadcrumbs(pathParam: string | string[]): Breadcrumb[] {
+export function getBreadcrumbs(pathParam: string | string[]): Breadcrumb[] { // TODO: 데이터 반환할때 DTO로 반환할 수 있도록
   const pathStr = Array.isArray(pathParam) ? pathParam.join('/') : pathParam || '';
   const parts = pathStr.split('/').filter(Boolean);
 
