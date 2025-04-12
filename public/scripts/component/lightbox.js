@@ -1,7 +1,7 @@
 /**
  * Initializes lightbox functionality for image and video elements.
  * Enables zooming on images and keyboard navigation between media items.
- */ // TODO: 라이트박스에서 영상 반복재생이 안됨.
+ */
 export function initLightbox() {
   const mediaCards = Array.from(document.querySelectorAll('.card[data-type="image"], .card[data-type="video"]'))
   let currentIndex = null
@@ -30,7 +30,7 @@ export function initLightbox() {
     if (type === 'image') {
       html = `<div class="zoom-container"><img src="${url}" class="zoomable" /></div>`
     } else if (type === 'video') {
-      html = `<video src="${url}" controls autoplay style="max-width:90vw; max-height:90vh;"></video>`
+      html = `<video src="${url}" controls autoplay loop style="max-width:90vw; max-height:90vh;"></video>`
     }
 
     instance = basicLightbox.create(html, {
