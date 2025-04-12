@@ -2,11 +2,16 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <title><%= title %></title>
+  <title>My File Explorer</title>
   <link rel="stylesheet" href="/styles/style.css" />
+  <link id="theme-style" rel="stylesheet" href="/styles/themes/dark.css" />
+  <link rel="icon" href="/icons/Github-Octicons-Flame-16.svg?v=2" id="page-logo" />
+  <link rel="stylesheet" href="https://unpkg.com/basiclightbox@5.0.4/dist/basicLightbox.min.css">
 </head>
 <body>
-  <%- body %>
-  <script src="/scripts/main.js"></script>
+  <%- include('body') %>
+
+  <script type="module" src="/scripts/main.js"></script>
+  <%- include('partials/lightbox') %> <!-- 라이트박스 파셜 -->
 </body>
 </html>

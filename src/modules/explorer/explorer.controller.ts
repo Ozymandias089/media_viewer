@@ -19,7 +19,7 @@ export class ExplorerController { // TODO: 결과에 폴더가 있으면 폴더 
    * @returns ExplorerResponseDto - 파일 항목과 빵부스러기 정보를 포함한 응답 객체
    */
   @Get()
-  @Render('index')
+  @Render('layout')
   getHome(): ExplorerResponseDto {
     const items: FileItemDto[] = this.explorerService.getExplorerItems();
     const breadcrumbs: BreadcrumbDto[] = getBreadcrumbs('');
@@ -37,7 +37,7 @@ export class ExplorerController { // TODO: 결과에 폴더가 있으면 폴더 
    * @returns ExplorerResponseDto - 파일 항목과 빵부스러기 정보를 포함한 응답 객체
    */
   @Get('browse/*path')
-  @Render('index')
+  @Render('layout')
   getFolder(@Param('path') pathParam: string | string[]): ExplorerResponseDto {
     const items: FileItemDto[] = this.explorerService.getExplorerItems(pathParam);
     const breadcrumbs: BreadcrumbDto[] = getBreadcrumbs(pathParam);

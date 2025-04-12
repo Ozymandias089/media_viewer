@@ -1,0 +1,12 @@
+<% if (breadcrumbs && breadcrumbs.length) { %>
+    <nav class="breadcrumbs">
+      <% breadcrumbs.forEach((crumb, i) => { %>
+        <% if (i !== breadcrumbs.length - 1) { %>
+          <a href="<%= crumb.url %>"><%= crumb.name %></a> /
+        <% } else { %>
+          <span><%= crumb.name %></span>
+        <% } %>
+      <% }) %>
+    </nav>
+  <% } %>
+  
