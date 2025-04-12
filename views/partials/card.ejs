@@ -1,7 +1,11 @@
 <div class="card <%= type %>" data-type="<%= type %>" data-url="<%= url %>" data-index="<%= index %>">
   <% if (type === 'directory') { %>
     <a href="<%= url %>" class="folder-link">
-      <div class="folder-icon">📁</div>
+      <% if (thumbnailUrl) { %>
+        <img src="<%= thumbnailUrl %>" alt="<%= name %> 썸네일" class="folder-thumbnail" />
+      <% } else { %>
+        <div class="folder-icon">📁</div>
+      <% } %>
       <div class="folder-name"><%= name %></div>
     </a>
   <% } else if (type === 'image') { %>
