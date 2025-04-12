@@ -117,7 +117,7 @@ export function initLightbox() {
       }
   
       if (!isZoomed) {
-        scale = 2
+        scale = 1.25
         originX = 0
         originY = 0
         isZoomed = true
