@@ -1,4 +1,6 @@
+import { HttpException, HttpStatus } from "@nestjs/common";
 import { BreadcrumbDto } from "src/modules/explorer/dto/breadcrumb.dto";
+import * as path from 'path';
 
 export function getBreadcrumbs(pathParam: string | string[]): BreadcrumbDto[] { // TODO: 데이터 반환할때 DTO로 반환할 수 있도록
   const pathStr = Array.isArray(pathParam) ? pathParam.join('/') : pathParam || '';
@@ -12,3 +14,13 @@ export function getBreadcrumbs(pathParam: string | string[]): BreadcrumbDto[] { 
 
   return [new BreadcrumbDto('Home', '/') , ...breadcrumbs];
 }  
+
+export function validatePath(path: string): void {
+  if (path.includes('..')) {
+    throw new HttpException('Invalid target path', HttpStatus.BAD_REQUEST);
+  }
+}
+
+export function getFullPath(targetPath: string): string {
+  return path.join(this.contentRootPath, targetPath);
+}
