@@ -2,7 +2,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import * as fs from 'fs';
 import * as path from 'path';
-import { Extension, FileItem, FileType } from '../../utils/types';
+import { FileItem, FileType } from '../../utils/types';
 import { FileItemDto } from './dto/file-item.dto';
 import { getFileType } from 'src/utils/file-utils';
 
